@@ -50,15 +50,15 @@ else
     
     #Edit Answer file
     #NOVA CONFIG
-    /bin/sed -i.org -e 's/CONFIG_NOVA_COMPUTE_PRIVIF=*/CONFIG_NOVA_COMPUTE_PRIVIF=$NIC2/g' /root/answer.txt
-    /bin/sed -i.org -e 's/CONFIG_NOVA_NETWORK_PRIVIF=*/CONFIG_NOVA_NETWORK_PRIVIF=$NIC2/g' /root/answer.txt
-    /bin/sed -i.org -e 's/CONFIG_NOVA_NETWORK_PUBIF=*/CONFIG_NOVA_NETWORK_PUBIF=$NIC1/g' /root/answer.txt
+    /bin/sed -i.org -e "s/CONFIG_NOVA_COMPUTE_PRIVIF=[a-zA-Z0-9]\+/CONFIG_NOVA_COMPUTE_PRIVIF=$NIC2/" /root/answer.txt
+    /bin/sed -i.org -e "s/CONFIG_NOVA_NETWORK_PRIVIF=[a-zA-Z0-9]\+/CONFIG_NOVA_NETWORK_PRIVIF=$NIC2/" /root/answer.txt
+    /bin/sed -i.org -e "s/CONFIG_NOVA_NETWORK_PUBIF=[a-zA-Z0-9]\+/CONFIG_NOVA_NETWORK_PUBIF=$NIC1/" /root/answer.txt
     
     #KEYSTONE CONFIG -admin password
-    /bin/sed -i.org -e 's/CONFIG_KEYSTONE_ADMIN_PW=*/CONFIG_KEYSTONE_ADMIN_PW=$PASS/g' /root/answer.txt
+    /bin/sed -i.org -e "s/CONFIG_KEYSTONE_ADMIN_PW=[a-zA-Z0-9]\+/CONFIG_KEYSTONE_ADMIN_PW=$PASS/" /root/answer.txt
     
     #disable DEMO account/network
-    /bin/sed -i.org -e 's/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/' /root/answer.txt
+    /bin/sed -i.org -e 's/CONFIG_PROVISION_DEMO=[a-zA-Z0-9]\+/CONFIG_PROVISION_DEMO=n/' /root/answer.txt
     
     
     #Run packstack with customized answer file
