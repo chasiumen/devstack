@@ -85,8 +85,8 @@ else
     /bin/cp -f ./conf/ifcfg-br-ex /etc/sysconfig/network-scripts/ifcfg-br-ex
     
     #neutron plugin setup
-
-
+    echo "network_vlan_ranges = physnet1" >> /etc/neutron/plugin.ini
+    echo "bridge_mappings = physnet1:br-ex" >> /etc/neutron/plugin.ini
     echo -e "${COLOR_RED}Instaltion completed"
-    #/sbin/shutdown -r -t now
+    /sbin/shutdown -r -t now
 fi #check root
