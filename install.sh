@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x 
 
 #Description:
 #   Continuous script from ready_stack.sh
