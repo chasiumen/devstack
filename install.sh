@@ -85,4 +85,8 @@ else
     /bin/cp -f ./conf/ifcfg-br-ex /etc/sysconfig/network-scripts/ifcfg-br-ex
     
     #neutron plugin setup
+
+
+    echo -e "${COLOR_RED}Instaltion completed"
+    #/sbin/shutdown -r -t now
 fi #check root
