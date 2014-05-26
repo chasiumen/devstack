@@ -58,7 +58,7 @@ else
     /bin/sed -i.org -e 's/CONFIG_KEYSTONE_ADMIN_PW=*/CONFIG_KEYSTONE_ADMIN_PW=$PASS/g' /root/answer.txt
     
     #disable DEMO account/network
-    /bin/sed -i.org -e 's/CONFIG_PROVISION_DEMO=*/CONFIG_PROVISION_DEMO=n/g' /root/answer.txt
+    /bin/sed -i.org -e 's/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/' /root/answer.txt
     
     
     #Run packstack with customized answer file
