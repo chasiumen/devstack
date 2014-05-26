@@ -35,10 +35,10 @@ if [[ $UID != 0 ]]; then
     exit 1
 else
     echo -e "${COLOR_LIGHT_BLUE}ROOT/SUDO run\t\t\t${COLOR_LIGHT_GREEN}[OK]${COLOR_DEFAULT}"
-    echo -e "${COLOR_RED}Static IP address"
-    echo -e "${COLOR_LIGHT_GREEN}IPADDR=${COLOR_YELLOW}192.168.1.244"
-    echo -e "${COLOR_LIGHT_GREEN}NETMASK=${COLOR_YELLOW}255.255.255.0"
-    echo -e "${COLOR_LIGHT_GREEN}GATEWAY=${COLOR_YELLOW}192.168.1.1"
+    echo -e "${COLOR_RED}Static IP address${COLOR_DEFAULT}"
+    echo -e "${COLOR_LIGHT_GREEN}IPADDR=${COLOR_YELLOW}192.168.1.244${COLOR_DEFAULT}"
+    echo -e "${COLOR_LIGHT_GREEN}NETMASK=${COLOR_YELLOW}255.255.255.0${COLOR_DEFAULT}"
+    echo -e "${COLOR_LIGHT_GREEN}GATEWAY=${COLOR_YELLOW}192.168.1.1${COLOR_DEFAULT}"
 
 
     #----------Install RDO-------------------
