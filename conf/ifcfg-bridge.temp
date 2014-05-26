@@ -1,0 +1,11 @@
+DEVICE=br-ex
+ONBOOT=yes
+DEVICETYPE=ovs
+TYPE=OVSBridge
+BOOTPROTO=static
+IPADDR=
+NETMASK=
+GATEWAY=
+DNS1=8.8.8.8           # nameserver
+DNS2=8.8.4.4
+
