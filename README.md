@@ -1,6 +1,6 @@
-RDO Havana single node(All-in-1) envrionmnet setup scripts
+RDO Havana single node(All-IN-ONE) environment setup scripts
 ========
 Those scripts only run on Centos 6.5 64bit
 
-1. Run ready_stach.sh to prepare for RDO installation
-2. Run install.sh to install RDO Havana
+1. Run _ready\_stach.sh_ to prepare for RDO installation  
+2. Run _install.sh_ to install RDO Havana  
