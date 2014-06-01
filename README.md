@@ -6,4 +6,4 @@ Those scripts only run on Centos 6.5 64bit
 2. Run _install.sh_ to install RDO Havana  
 
 
-Default dashboard password is _admin_. You can customize admin password and NIC settings on _install.sh_
+Default dashboard password is _admin_. You can customize admin password and NIC settings in _install.sh_
