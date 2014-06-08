@@ -81,6 +81,13 @@ _SYSCTLCONF_
             
             #add RDO Havana repo
             /usr/bin/yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-8.noarch.rpm
+           
+            #install ntp
+            /usr/bin/yum install -y ntp
+            /usr/sbin/ntpdate server 0.centos.pool.ntp.org
+            /sbin/chkconfig ntpd on
+            /sbin/service ntpd restart
+
             #update package
             /usr/bin/yum -y update
             
