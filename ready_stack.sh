@@ -81,6 +81,10 @@ _SYSCTLCONF_
             
             #add RDO Havana repo
             /usr/bin/yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-8.noarch.rpm
+
+            #sshd config | allow root login
+            /bin/sed -i.org -e 's/PermitRootLogin no/PermitRootLogin yes/gi' /etc/ssh/sshd_config
+            /sbin/service sshd reload
            
             #install ntp
             /usr/bin/yum install -y ntp

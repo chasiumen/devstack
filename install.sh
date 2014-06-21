@@ -28,6 +28,8 @@ COLOR_RED='\033[0;31m'
 COLOR_WHITE='\033[1;37m'
 COLOR_DEFAULT='\033[0m'
 
+SUBNET1='172.16.13.0/24'
+
 
 #Check ROOT permission
 if [[ $UID != 0 ]]; then
@@ -88,5 +90,37 @@ else
     echo "network_vlan_ranges = physnet1" >> /etc/neutron/plugin.ini
     echo "bridge_mappings = physnet1:br-ex" >> /etc/neutron/plugin.ini
     echo -e "${COLOR_RED}Instaltion completed"
-    /sbin/shutdown -r -t now
+
+
+#Create basic neutron network
+    
+    source /root/keystonerc_admin
+    neutron router-create router1 #create router1 and get router1 id
+    
+    ROUTER_ID=$(neutron router-show router1 | grep -i tenant_id | awk -F '|' '{print $3}')
+    ADMIN_ID=$(keystone tenant-list | grep admin | awk -F '|' '{print $2}') #Case public
+
+    neutron net-create public --tenant-id $ADMIN_ID --router:external=True
+    #Assign IP address rage on networks
+    #neutron subnet-create ext-net \
+    #  --allocation-pool start=FLOATING_IP_START,end=FLOATING_IP_END \
+    #  --gateway=EXTERNAL_INTERFACE_GATEWAY --enable_dhcp=False \
+    #  EXTERNAL_INTERFACE_CIDR
+    neutron subnet-create public  --name public_subnet01 --allocation-pool start=192.168.1.200,end=192.168.1.224 --gateway=192.168.1.1 --enable_dhcp=False 192.168.1.0/24
+    #Case private
+    #neutron net-create private-net --tenant-id $routerid --shared
+    neutron net-create private-net --tenant-id $ADMIN_ID
+    neutron subnet-create private-net 10.0.0.0/24 --name private_subnet01 --enable_dhcp=True --gateway=10.0.0.1 --dns-nameserver 8.8.8.8 
+    neutron net-update private-net --shared
+
+    #Assing router1 gateway as public network
+    neutron router-gateway-set router1 public
+    neutron router-interface-add router1 subnet=private_subnet01 #connect private network with router1
+
+
+    #Change hypervisor to kvm    
+    /bin/sed -i.org -e "s/libvirt_type=qemu/libvirt_type=kvm/" /etc/nova/nova.conf
+    
+
+    #/sbin/shutdown -r -t now
 fi #check root
